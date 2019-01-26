@@ -31,7 +31,16 @@ export default class App extends Component {
           Load Candidates
         </button>
         { !!rootStore.candidatesCount && <Board store={rootStore} /> }
+        { waiting && <Loading />}
       </div>
     )
   }
 }
+
+const Loading = () =>
+  <p style={{
+    fontSize: '1.2rem',
+    color: 'blue'
+  }}>
+    Loading candidates...
+  </p>
