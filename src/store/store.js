@@ -2,13 +2,15 @@
  Developer note:
  
  MobX provides a simple and unopinionated tool for managing dataflow.
- This is not an immutable state tree like Redux, using actions and dispatchers
+ This is not an immutable state tree like Redux, however using actions and dispatchers
  is still a recommended pattern.
 
  A more complex project would do well to use MobX in combination with mobx-state-tree
  for a transactional and immutable state container.
  https://github.com/mobxjs/mobx-state-tree
 */
+
+// todo: figure out why @computed decorator is throwing an error
 
 import { observable, computed, action, toJS, autorun, reaction } from 'mobx'
 import Candidate from './models/candidate'
