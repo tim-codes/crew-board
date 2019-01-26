@@ -1,0 +1,19 @@
+{
+  "name": "crew-board",
+  "version": "1.0.0",
+  "description": "Kanban board for managing the hiring process of personnel applications.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tim-codes/crew-board.git"
+  },
+  "author": "@tim-codes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tim-codes/crew-board/issues"
+  },
+  "homepage": "https://github.com/tim-codes/crew-board#readme"
+}
