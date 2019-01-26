@@ -1,5 +1,7 @@
 # crew-board
-React/MobX app. Kanban board for managing the hiring process of personnel applications.
+Kanban board for managing the hiring process of personnel applications.
+
+An example React application that makes use of MobX for state management and is bundled with **ParcelJS**.
 
 #### Usage:
 Development environment:
