@@ -1,2 +1,3 @@
+#!/usr/bin/env bash
 rm -r dist/
-parcel build src/index.html
+parcel build index.html
