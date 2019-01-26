@@ -1,0 +1,7 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "semi": "off",
+    "consistent-return": "off"
+  }
+}

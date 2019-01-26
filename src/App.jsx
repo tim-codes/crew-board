@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 
 export default class App extends Component {
-  render () {
+  constructor() {
+    super()
+    this.state = {
+
+    }
+  }
+
+  render() {
     return (
       <div>
         Hello World!
