@@ -10,17 +10,13 @@ export default class App extends Component {
     }
   }
   
-  async loadCandidates () {
+  loadCandidates () {
     this.setState({ waiting: true })
-    try {
-      await fetch('https://randomuser.me/api/?nat=gb&results=5')
-        .then(res => res.json())
-        .then(({ results }) => rootStore.bulkAddCandidates(results))
-    } catch (err) {
-      console.error(err)
-    } finally {
-      this.setState({ waiting: false })
-    }
+    fetch('https://randomuser.me/api/?nat=gb&results=5')
+      .then(res => res.json())
+      .then(({ results }) => rootStore.bulkAddCandidates(results))
+      .catch(err => console.error(err))
+      .then(() => this.setState({ waiting: false }))
   }
   
   render () {
