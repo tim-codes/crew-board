@@ -28,17 +28,13 @@ export default class App extends Component {
     
     return (
       <div className="App">
-        { rootStore.getCandidatesCount()
-            ? <Board store={rootStore} />
-            : (
-              <button
-                onClick={() => this.loadCandidates()}
-                disabled={waiting}
-              >
-                Load Candidates
-              </button>
-          )
-        }
+        <button
+          onClick={() => this.loadCandidates()}
+          disabled={waiting}
+        >
+          Load Candidates
+        </button>
+        { rootStore.getCandidatesCount() && <Board store={rootStore} /> }
       </div>
     )
   }
