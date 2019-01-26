@@ -34,7 +34,7 @@ export default class App extends Component {
         >
           Load Candidates
         </button>
-        { rootStore.getCandidatesCount() && <Board store={rootStore} /> }
+        { rootStore.candidatesCount && <Board store={rootStore} /> }
       </div>
     )
   }

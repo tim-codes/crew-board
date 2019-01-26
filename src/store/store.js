@@ -10,11 +10,26 @@
  https://github.com/mobxjs/mobx-state-tree
 */
 
-import { observable, computed, action, toJS, autorun } from 'mobx'
+import { observable, computed, action, toJS, autorun, reaction } from 'mobx'
 import Candidate from './models/candidate'
+
+function parseCandidateData(data) {
+  return {
+    email: data.email,
+    id: data.id.value.replace(/ /g, '').toLowerCase(),
+    city: data.location.city,
+    firstName: data.name.first,
+    lastName: data.name.last
+  }
+}
 
 class Store {
   @observable candidates = []
+  
+  candidatesCounter = reaction(
+    () => this.candidatesCount,
+    length => console.log(`Candidates: ${length}`)
+  )
   
   // serialise entire Store
   toJSON = () => toJS({
@@ -22,7 +37,9 @@ class Store {
   })
   
   @action setProp = (prop, val) => {
-    console.log(`Setting ${prop}:`, val)
+    if (prop === 'candidates') {
+      val = val.map(data => new Candidate(data))
+    }
     this[prop] = val
   }
   
@@ -60,21 +77,23 @@ class Store {
     window.addEventListener('storage', (e) => {
       // e is a StorageEvent
       if (this.props.includes(e.key) && e.newValue) {
-        this.setProp(JSON.parse(e.newValue))
+        this.setProp('candidates', JSON.parse(e.newValue))
       }
     })
   }
   
-  getCandidatesCount () {
+  get candidatesCount () {
     return this.candidates.length
   }
   
-  filterBy (prop, val) {
-    return this.candidates.filter(c => c[prop] = val)
+  filterCandidatesBy (prop, val) {
+    return this.candidates.filter(c => c[prop] === val)
   }
   
-  addCandidate (props) {
-    this.candidates.push(new Candidate(props))
+  addCandidate (data) {
+    this.candidates.push(new Candidate(
+      parseCandidateData(data)
+    ))
   }
   
   bulkAddCandidates (candidates) {

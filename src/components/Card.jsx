@@ -6,9 +6,11 @@ export default class Card extends Component {
   }
 
   render () {
+    const { candidate } = this.props
+    
     return (
       <div className="Card">
-        <h1>Card Component</h1>
+        <p>{candidate.fullName}</p>
       </div>
     )
   }

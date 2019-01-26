@@ -1,21 +1,16 @@
 import { observable, action } from 'mobx'
+import config from '../../../config'
 
-const statusPipeline = [
-  'applied',
-  'interviewing',
-  'hired'
-]
+const { statusPipeline } = config
 
 export default class Candidate {
   @observable status = statusPipeline[0]
   img = null
   
   constructor (props) {
-    console.log('Creating candidate:', props)
-    this.firstName = props.name.firstName
-    this.lastName = props.name.lastName
-    this.city = props.location.city
-    this.email = props.email
+    Object.entries(props).forEach(([prop, val]) => {
+      this[prop] = val
+    })
   }
   
   get fullName () {
